@@ -1,0 +1,16 @@
+# Fix: game over message appears too early
+# Fix: number not always removed when shot
+# Prevent collisions on initial creation
+# Restart button
+
+# Show speech bubble
+# Make sound
+# Light up eyes
+
+# Explode number when shot
+# Move numbers around
+# Fade out big number (and speech bubble) when expired
+
+# Move mouth in time with speech
+
+# Speed controls
