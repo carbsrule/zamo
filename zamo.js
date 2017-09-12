@@ -1,6 +1,7 @@
 var ludo;
 var context;
 var zamo;
+var okuloj;
 var last_render;
 var lasers = [];
 var numbers = [];
@@ -9,8 +10,9 @@ var chosen_num = -1;
 var display_num;
 
 var laser_speed = 6000.0;
-var num_retain_time = 10000; // in milliseconds
-var count_on_screen = 4;
+var num_retain_time = 3000; // in milliseconds
+var count_on_screen = 25;
+var eyes_until = 0;
 
 
 function rand(min, max)
@@ -88,6 +90,15 @@ function update(time_elapsed)
     for (var i = 0; i < numbers.length; ++i) {
         num = numbers[i];
         context.fillText(num.val, num.x, num.y);
+    }
+
+    if (eyes_until >= Date.now()) {
+        for (var i = 0; i < 2; ++i) {
+            context.fillStyle = '#FF0000';
+            context.beginPath();
+            context.arc(okuloj[i].x, okuloj[i].y, 3, 0, 2 * Math.PI);
+            context.fill();
+        }
     }
 
     // Aperigi laserojn
@@ -169,7 +180,7 @@ window.onload = function() {
     zamo.x = ludo.width - zamo.img.width - 10,
     zamo.y = 10;
 
-    var okuloj = [
+    okuloj = [
         {x: zamo.x + 14, y: zamo.y + 54},
         {x: zamo.x + 50, y: zamo.y + 52}
     ];
@@ -189,6 +200,7 @@ window.onload = function() {
                 y_vel: (ya_distanco / dist) * laser_speed,
             });
         }
+        eyes_until = Date.now() + 300;
 
         return false;
     };
