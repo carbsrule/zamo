@@ -25,8 +25,6 @@ function sqr(num)
 
 function num2text(num)
 {
-    console.log(num, 'num2test num');
-
     var cols = [], numbers = [], col;
     var digits = [
         'nulo', 'unu', 'du', 'tri', 'kvar', 'kvin', 'ses', 'sep', 'ok', 'naŭ'
@@ -70,11 +68,6 @@ function update(time_elapsed)
             chosen_num = rand(0, numbers.length - 1);
         }
         display_num = num2text(numbers[chosen_num].val);
-
-        console.log(ludo.width, 'ludo.width');
-        console.log(context.measureText(display_num).width, 'display_num.width');
-
-        console.log((ludo.width - context.measureText(display_num).width) / 2, 'Calc X');
     }
 
     context.clearRect(0, 0, ludo.width, ludo.height);
@@ -130,7 +123,6 @@ function update(time_elapsed)
             var x_match = (laser.x >= box.left && laser.x <= box.right) || (laser.old_x >= box.left && laser.old_x <= box.right) || (laser.x < box.left && laser.old_x >= box.right)
             var y_match = (laser.y >= box.top && laser.y <= box.bottom) || (laser.old_y >= box.top && laser.old_y <= box.bottom) || (laser.y >= box.bottom && laser.old_y <= box.top);
             if (x_match && y_match) {
-                console.log('BOOM');
                 numbers.splice(chosen_num, 1);
                 chosen_num = -1;
             }
@@ -146,8 +138,6 @@ function update(time_elapsed)
         context.fillStyle = '#FF8000';
         context.font = '64px Arial';
         context.fillText(display_num, (ludo.width - context.measureText(display_num).width) / 2, 64);
-
-        console.log(display_num, 'Chosen number');
     } else {
         var txt = 'Jen, vi venkis la ludon!';
         context.fillStyle = '#FFFF00';
@@ -186,8 +176,6 @@ window.onload = function() {
 
     // Pafu laserojn post musa klako
     ludo.onclick = function(e) {
-        //console.log([e.clientX, e.clientY], 'X,Y');
-
         var xa_distanco, ya_distanco, dist;
         for (var i = 0; i < okuloj.length; ++i) {
             xa_distanco = (okuloj[i].x - e.clientX);
