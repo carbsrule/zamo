@@ -95,8 +95,8 @@ function update(time_elapsed)
     var del_lasers = [];
     for (var i = 0; i < lasers.length; ++i) {
         laser = lasers[i];
-        laser.last_x = laser.x;
-        laser.last_y = laser.y;
+        laser.old_x = laser.x;
+        laser.old_y = laser.y;
         laser.x = laser.x - (laser.x_vel * time_elapsed);
         laser.y = laser.y - (laser.y_vel * time_elapsed);
 
@@ -119,9 +119,6 @@ function update(time_elapsed)
                 top: num.y - 18,
                 bottom: num.y
             };
-
-            context.fillStyle = '#00FF00';
-            context.fillRect(box.left, box.top, box.right - box.left, box.bottom - box.top);
 
             var x_match = (laser.x >= box.left && laser.x <= box.right) || (laser.old_x >= box.left && laser.old_x <= box.right) || (laser.x < box.left && laser.old_x >= box.right)
             var y_match = (laser.y >= box.top && laser.y <= box.bottom) || (laser.old_y >= box.top && laser.old_y <= box.bottom) || (laser.y >= box.bottom && laser.old_y <= box.top);
