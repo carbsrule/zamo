@@ -66,6 +66,7 @@ function update(time_elapsed)
         var old_num = chosen_num;
         while (old_num == chosen_num) {
             chosen_num = rand(0, numbers.length - 1);
+            if (numbers.length == 1) break;
         }
         display_num = num2text(numbers[chosen_num].val);
     }
