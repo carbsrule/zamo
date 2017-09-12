@@ -138,7 +138,7 @@ function update(time_elapsed)
         context.fillStyle = '#FF8000';
         context.font = '64px Arial';
         context.fillText(display_num, (ludo.width - context.measureText(display_num).width) / 2, 64);
-    } else {
+    } else if (numbers.length == 0) {
         var txt = 'Jen, vi venkis la ludon!';
         context.fillStyle = '#FFFF00';
         context.font = '128px Arial';
