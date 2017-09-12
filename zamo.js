@@ -74,10 +74,12 @@ function update(time_elapsed)
     context.clearRect(0, 0, ludo.width, ludo.height);
 
     // Desegni Zamon
-    context.drawImage(
-        zamo.img, 0, 0, zamo.img.width, zamo.img.height,
-        zamo.x, zamo.y, zamo.img.width, zamo.img.height
-    );
+    if (zamo.img.complete) {
+        context.drawImage(
+            zamo.img, 0, 0, zamo.img.width, zamo.img.height,
+            zamo.x, zamo.y, zamo.img.width, zamo.img.height
+        );
+    }
 
     // Aperigi nombrojn
     context.fillStyle = '#E0E0E0';
