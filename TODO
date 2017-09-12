@@ -1,5 +1,3 @@
-# Fix: game over message appears too early
-# Fix: number not always removed when shot
 # Prevent collisions on initial creation
 # Restart button
 
